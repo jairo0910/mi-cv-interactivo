@@ -1,4 +1,4 @@
 streamlit==1.29.0
-Pillow==9.5.0  # ¡Versión estable y compatible!
+Pillow==9.0.0  # Versión conocida por funcionar
 plotly==5.18.0
 pandas==2.1.0
