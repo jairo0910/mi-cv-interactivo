@@ -1,14 +1,13 @@
 import streamlit as st
-from PIL import Image
 import plotly.express as px
 import pandas as pd
 
 # ========================================
-# CONFIGURACION INICIAL
+# CONFIGURACIÓN INICIAL
 # ========================================
 st.set_page_config(
     page_title="CV Interactivo | Tu Nombre",
-    page_icon="??",
+    page_icon="🚀",  # Emoji estándar
     layout="wide"
 )
 
@@ -23,33 +22,35 @@ def skill_bar(skill_name, level):
 # SIDEBAR (CONTACTO)
 # ========================================
 with st.sidebar:
-    # Foto de perfil (reemplaza con tu imagen)
+    # Foto de perfil usando solo Streamlit
     try:
-        image = Image.open("foto_perfil.jpg")
-        st.image(image, width=200)
+        st.image("foto_perfil.jpg", width=200)  # Streamlit maneja la imagen directamente
     except:
-        st.warning("?? Sube tu foto como 'foto_perfil.jpg'")
+        st.warning("⚠️ Sube tu foto como 'foto_perfil.jpg'")
 
-    st.markdown("## ?? Informacion de Contacto")
-    st.write("?? **Email:** tu@email.com")
-    st.write("?? **Telefono:** +123456789")
-    st.write("?? **LinkedIn:** [linkedin.com/tuperfil](https://linkedin.com)")
-    st.write("?? **GitHub:** [github.com/tuperfil](https://github.com)")
+    st.markdown("## 📌 Información de Contacto")
+    st.write("📧 **Email:** tu@email.com")
+    st.write("📱 **Teléfono:** +123456789")
+    st.write("🌐 **LinkedIn:** [linkedin.com/tuperfil](https://linkedin.com)")
+    st.write("💻 **GitHub:** [github.com/tuperfil](https://github.com)")
 
-    # Boton de descarga (opcional)
-    with open("CV.pdf", "rb") as file:
-        st.download_button(
-            label="?? Descargar CV en PDF",
-            data=file,
-            file_name="CV_Interactivo.pdf",
-            mime="application/pdf"
-        )
+    # Botón de descarga (opcional)
+    try:
+        with open("CV.pdf", "rb") as file:
+            st.download_button(
+                label="⬇️ Descargar CV en PDF",
+                data=file,
+                file_name="CV_Interactivo.pdf",
+                mime="application/pdf"
+            )
+    except:
+        st.warning("PDF no encontrado")
 
 # ========================================
-# SECCION PRINCIPAL
+# SECCIÓN PRINCIPAL
 # ========================================
 st.title("Tu Nombre Completo")
-st.markdown("### ?? Desarrollador Full Stack | Especialista en Python")
+st.markdown("### 🎯 Desarrollador Full Stack | Especialista en Python")
 
 # Divisor visual
 st.markdown("---")
@@ -60,19 +61,19 @@ st.markdown("---")
 col1, col2 = st.columns([2, 3])
 
 with col1:
-    st.markdown("### ????? Sobre Mi")
+    st.markdown("### 🧑‍💻 Sobre Mí")
     st.write("""
-    !Hola! Soy un apasionado desarrollador con experiencia en:
+    ¡Hola! Soy un apasionado desarrollador con experiencia en:
     - Desarrollo web con Python y JavaScript
-    - Analisis de datos
-    - Automatizacion de procesos
-    - Machine Learning basico
+    - Análisis de datos
+    - Automatización de procesos
+    - Machine Learning básico
     """)
 
 with col2:
-    st.markdown("### ?? Habilidades Tecnicas")
+    st.markdown("### 🛠 Habilidades Técnicas")
     
-    # Grafico de habilidades (usando Plotly)
+    # Gráfico de habilidades (usando Plotly)
     skills_data = {
         "Habilidad": ["Python", "SQL", "Streamlit", "JavaScript", "Git"],
         "Nivel": [90, 85, 80, 75, 70]
@@ -90,50 +91,50 @@ with col2:
 # EXPERIENCIA LABORAL (CON EXPANDERS)
 # ========================================
 st.markdown("---")
-st.markdown("## ?? Experiencia Profesional")
+st.markdown("## 💼 Experiencia Profesional")
 
-with st.expander("?? **Desarrollador Full Stack en Empresa XYZ (2020-Presente)**"):
+with st.expander("🚀 **Desarrollador Full Stack en Empresa XYZ (2020-Presente)**"):
     st.markdown("""
-    - Lidere el desarrollo de una aplicacion web con **Streamlit y React**.
-    - Optimice consultas SQL reduciendo tiempos de respuesta en **40%**.
-    - Implemente pipelines de ETL para procesar datos diarios.
+    - Lideré el desarrollo de una aplicación web con **Streamlit y React**
+    - Optimicé consultas SQL reduciendo tiempos de respuesta en **40%**
+    - Implementé pipelines de ETL para procesar datos diarios
     """)
 
-with st.expander("?? **Analista de Datos en ABC Corp (2018-2020)**"):
+with st.expander("📊 **Analista de Datos en ABC Corp (2018-2020)**"):
     st.markdown("""
-    - Cree dashboards interactivos con **Plotly y Power BI**.
-    - Automatice reportes mensuales usando **Python y Pandas**.
+    - Creé dashboards interactivos con **Plotly y Power BI**
+    - Automaticé reportes mensuales usando **Python y Pandas**
     """)
 
 # ========================================
 # PROYECTOS DESTACADOS
 # ========================================
 st.markdown("---")
-st.markdown("## ?? Proyectos Destacados")
+st.markdown("## 🏆 Proyectos Destacados")
 
 proj_col1, proj_col2 = st.columns(2)
 
 with proj_col1:
-    with st.expander("?? Chatbot con IA"):
+    with st.expander("🤖 Chatbot con IA"):
         st.markdown("""
-        - Chatbot para servicio al cliente usando **GPT-3**.
-        - Integracion con Slack y WhatsApp.
-        - [Ver codigo en GitHub](https://github.com)
+        - Chatbot para servicio al cliente usando **GPT-3**
+        - Integración con Slack y WhatsApp
+        - [Ver código en GitHub](https://github.com)
         """)
         st.image("https://via.placeholder.com/300x150", caption="Captura del proyecto")
 
 with proj_col2:
-    with st.expander("?? Analisis de Datos en Tiempo Real"):
+    with st.expander("📈 Análisis de Datos en Tiempo Real"):
         st.markdown("""
-        - Sistema de monitoreo con **Streamlit y AWS**.
-        - Visualizacion interactiva de datos financieros.
+        - Sistema de monitoreo con **Streamlit y AWS**
+        - Visualización interactiva de datos financieros
         """)
 
 # ========================================
 # FORMULARIO DE CONTACTO
 # ========================================
 st.markdown("---")
-st.markdown("## ?? Contactame")
+st.markdown("## 📩 Contáctame")
 
 with st.form(key='contact_form'):
     name = st.text_input("Nombre completo")
@@ -142,7 +143,7 @@ with st.form(key='contact_form'):
     submit_button = st.form_submit_button("Enviar mensaje")
     
     if submit_button:
-        st.success(f"!Gracias {name}! Tu mensaje ha sido enviado (simulacion).")
+        st.success(f"¡Gracias {name}! Tu mensaje ha sido enviado (simulación).")
 
 # ========================================
 # ESTILO PERSONALIZADO (CSS)
